@@ -3,9 +3,11 @@ with open ('word_list.txt') as file:
     words_list = file.read()
     words_list = words_list.split(",\n")
 
-my_word = random.choice(words_list).upper() # un str 
+# Je récupère un mot aléatoire dans mon fichier word_list.txt
+my_word = random.choice(words_list).upper() 
 
-def hidden_word(word): # rentre un str et renvoi une list
+# Crée une liste de "_" de la longueur de word
+def hidden_word(word): 
     hidden_word =[]
     for i in my_word:
         if len(my_word) != len(hidden_word):
@@ -21,6 +23,8 @@ def game():
     mot_trouve = False
     penalite = 0
     attempts = 0
+
+    # Récupère le meilleur score 
     f = open("scores.txt", "r")
     best_score = int(f.read(2))
     f.close()
@@ -47,6 +51,7 @@ def game():
             if enter== my_word :
                 mot_trouve = True
                 if attempts < best_score:
+                    # Je mets à jour le meilleur score
                     f = open("scores.txt", "w")
                     f.write(str(attempts))
                     f.close()
@@ -73,20 +78,5 @@ def game():
             else:
                 print("Bravo vous avez trouvé {} en {} d'essais. Le record est de {} essais.".format(my_word,attempts,best_score))
     
-
+# Lance le jeu
 game()
-
-
-# #liste de mots
-# #choisi un entier entre 0 et len(liste)
-# #tire au sort un mot de la liste grace à indice de la liste
-# #liste de ton mot caché (avec underscore)
-# # si n underscore != len(mot) alors affiche un underscore supplementaire
-
-# #essayons de deviner le mot : entrer une lettre ou un mot
-
-# #boucle while pour les tours  jusqu'a trouver le bon mot 
-# # if letter in mot affiche lettre(s) et +1 en penalty
-# # else +3 penalty
-# # elif le bon mot in mot affiche mot tu as gagne !(on garde le penalty precedent)
-# # elif le mauvais mot  prend +5 en penalty
