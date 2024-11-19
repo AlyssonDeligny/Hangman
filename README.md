@@ -2,7 +2,10 @@
 Pre-pool MsC EPITECH project
 
 ## How to use
->python3 game_engine.py
+
+```bash
+python3 game_engine.py
+```
 
 ## Rules
 
